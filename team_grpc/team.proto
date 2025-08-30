@@ -5,4 +5,38 @@ package team_service_v1;
 option go_package = "github.com/wycliff-ochieng/sports-proto/team_grpc/team_proto";
 
 
-service TeamRPC{}
+service TeamRPC{
+    rpc GetTeamSummary(GetTeamSummaryRequest) returns(GetTeamSummaryResponse){}
+    rpc CheckTeamMembership(GetTeamMembershipRequest) returns (GetTeamMembershipResponse){}
+}
+
+
+message GetTeamSummaryRequest{
+    repeated string team_id = 1;
+}
+
+message GetTeamSummaryResponse{
+    map <string,TeamSummary> teams = 1;
+}
+
+message GetTeamMembershipRequest{
+    repeated string team_id = 1;
+}
+
+message GetTeamMembershipResponse{
+    map <string, TeamMember> members = 1;
+}
+
+
+message TeamSummary{
+    string team_id = 1;
+    string namr =2;
+    string sport =3;
+    string description =4;
+}
+
+message TeamMember{
+    string user_id = 1;
+    string team_id =2;
+    string role = 3;
+}
