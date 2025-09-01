@@ -7,20 +7,22 @@ option go_package = "github.com/wycliff-ochieng/sports-proto/team_grpc/team_prot
 
 service TeamRPC{
     rpc GetTeamSummary(GetTeamSummaryRequest) returns(GetTeamSummaryResponse){}
-    rpc CheckTeamMembership(GetTeamMembershipRequest) returns (GetTeamMembershipResponse){}
+    rpc CheckTeamMembership(GetTeamMembershipRequest) returns(GetTeamMembershipResponse){}
+    //rpc GetTeamMembers(GetTeamMembersRequest) returns(GetTeamMembersRequest){}
 }
 
-
 message GetTeamSummaryRequest{
-    repeated string team_id = 1;
+    string team_id = 1;
 }
 
 message GetTeamSummaryResponse{
-    map <string,TeamSummary> teams = 1;
+    repeated TeamMember members = 1;
+    //map <string,TeamSummary> teams = 1;
 }
 
 message GetTeamMembershipRequest{
-    repeated string team_id = 1;
+    string team_id = 1;
+    repeated string user_id = 2;
 }
 
 message GetTeamMembershipResponse{
@@ -30,7 +32,7 @@ message GetTeamMembershipResponse{
 
 message TeamSummary{
     string team_id = 1;
-    string namr =2;
+    string name =2;
     string sport =3;
     string description =4;
 }

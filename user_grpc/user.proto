@@ -18,9 +18,10 @@ message UserProfile{
     string userid = 1;
     string firstname = 2;
     string lastname = 3;
-    string email = 4;
-    string createdat =5;
-    string updatedat = 6;
+    string teamid = 4;
+    string email = 5;
+    string createdat =6;
+    string updatedat = 7;
 }
 
 
